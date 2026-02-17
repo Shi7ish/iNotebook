@@ -43,7 +43,10 @@ routes.post('/createuser', [
     res.json({ success, authtoken })
   } catch (error) {
     console.log(error.message)
-    res.status(500).send(success,"Internal Error Occured...")
+    res.status(500).json({
+        success: false,
+        message: error.message
+    });
   }
   // .then(user => res.json(User))
   // .catch(err => {
